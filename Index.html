@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guesser Game</title>
+</head>
+<body>
+
+    <h1>Number Guesser Game</h1>
+    <p>Try to guess the correct number between 1 and 10. You have 3 chances!</p>
+
+    <script>
+        let low = 1;
+        let high = 10;
+        let correct_ans = Math.floor(Math.random() * (high - low + 1)) + low;
+        let chances = 3;
+
+        for (let i = 0; i < chances; i++) {
+            let userGuess = parseInt(prompt(`Guess a number between ${low} and ${high}:`));
+
+            if (userGuess === correct_ans) {
+                alert("You Win!");
+                break;
+            } else if (userGuess < correct_ans) {
+                alert("Correct answer is greater!");
+            } else if (userGuess > correct_ans) {
+                alert("Correct answer is smaller!");
+            }
+
+            if (i < chances - 1) {
+                alert(`You have ${chances - i - 1} chances left.`);
+            }
+
+            if (i === chances - 1) {
+                alert("You lose! The correct answer was " + correct_ans);
+            }
+        }
+
+        if (confirm("Do you want to play again?")) {
+            location.reload(); 
+        }
+    </script>
+
+</body>
+</html>
